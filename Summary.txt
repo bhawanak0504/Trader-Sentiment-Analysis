@@ -1,0 +1,96 @@
+📄 Trader Performance vs Market Sentiment
+
+* Summary Write-Up – Primetrade.ai Assignment
+
+1️⃣ Methodology
+
+The objective of this analysis was to evaluate how Bitcoin market sentiment (Fear vs Greed) impacts trader behavior and performance on Hyperliquid.
+
+Data Preparation
+Two datasets were used:
+
+- Bitcoin Fear & Greed Index (daily sentiment classification)
+- Historical trader-level trading data
+
+The datasets were aligned at a daily level after:
+
+- Converted timestamps to daily format
+- Aligned both datasets at the daily level
+- Removed missing sentiment entries
+- Handled leverage outliers and missing values
+- Created performance and behavior metrics
+
+Feature Engineering
+Key metrics created for analysis included:
+- Daily PnL per trader
+- Win rate (PnL > 0)
+- Average trade size
+- Leverage usage
+- Trade frequency
+- Long/Short ratio
+- Drawdown proxy (PnL volatility proxy)
+
+Analytical Framework
+The analysis consisted of:
+1. Compared performance metrics between Fear and Greed regimes
+2. Conducted independent two-sample t-tests to evaluate statistical significance
+3. Evaluating behavioral shifts in trade size, leverage, and activity levels
+4. Segmented traders by:
+    - High vs Low leverage
+    - Frequent vs Infrequent traders
+    - Consistent vs Inconsistent performers
+5. Built a logistic regression model to predict trade profitability using sentiment and behavioral features
+
+An interactive Streamlit dashboard was developed to enable dynamic exploration of these results.
+
+2️⃣ Key Insights
+
+Insight 1: Sentiment Impacts Profitability
+
+Greed days show higher average profitability compared to Fear days.
+The difference was statistically significant (p < 0.05), indicating that trader performance varies meaningfully across sentiment conditions.
+
+Insight 2: Leverage Amplifies Risk During Fear Regimes
+
+High-leverage traders experience disproportionately larger drawdowns during Fear periods.
+While leverage enhances upside in favorable regimes, it disproportionately amplifies losses in negative sentiment environments.
+
+Insight 3: Consistency Reduces Sentiment Sensitivity
+
+Frequent and consistent traders maintain relatively stable win rates across sentiment regimes.
+In contrast, inconsistent traders show higher volatility and are more sensitive to emotional market shifts.
+
+3️⃣ Strategy Recommendations
+
+Based on the findings, the following data-driven strategy guidelines are proposed:
+
+1. Sentiment-Aware Leverage Controls
+
+- Reduce leverage exposure during Fear regimes, particularly for traders with historically high PnL volatility.
+- This mitigates amplified drawdowns during adverse sentiment cycles.
+
+2. Selective Position Scaling in Greed
+
+- Increase position sizing moderately during Greed regimes, but only for traders with historically consistent performance.
+- This captures favorable momentum while maintaining risk discipline.
+
+3. Dynamic Risk Segmentation
+
+Apply differentiated controls by trader profile:
+
+- High-leverage traders → stricter risk caps during Fear
+- Inconsistent traders → tighter stop-loss thresholds
+- Consistent traders → controlled flexibility in scaling
+
+4. Predictive Risk Signaling
+
+- A machine learning classifier was developed to estimate trade profitability using sentiment, leverage, and trade size.
+- Such models can serve as early risk indicators and assist in dynamic capital allocation decisions.
+
+4️⃣ Conclusion
+
+This study demonstrates that market sentiment significantly impacts both trader behavior and profitability.
+
+Incorporating sentiment-aware leverage controls and trader segmentation into risk management frameworks can enhance performance stability while reducing downside exposure.
+
+The combination of statistical validation, behavioral segmentation, and predictive modeling provides a scalable, data-driven foundation for sentiment-informed trading optimization.
